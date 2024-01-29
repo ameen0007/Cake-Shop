@@ -1,0 +1,53 @@
+.order-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.order-modal.open {
+  display: block;
+}
+.order-modal .modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.order-modal .modal-content h2 {
+  text-align: center;
+}
+.order-modal .modal-content label {
+  display: block;
+  margin: 15px 0;
+}
+.order-modal .modal-content label input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+.order-modal .modal-content button {
+  background-color: #27ae60;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.order-modal .modal-content button:hover {
+  background-color: #218c54;
+}
+.order-modal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}/*# sourceMappingURL=modal.css.map */

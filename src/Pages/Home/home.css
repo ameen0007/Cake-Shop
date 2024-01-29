@@ -1,1 +1,108 @@
-/*# sourceMappingURL=home.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap");
+.main-div.mode {
+  background-color: rgb(16, 15, 15);
+}
+.main-div.mode .typebox h2 {
+  color: #Fcf6f5;
+}
+.main-div.mode .slogan {
+  color: #Fcf6f5;
+}
+
+.main-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-height: 100vh;
+  background-color: #Fcf6f5;
+}
+.main-div .slogan {
+  font-family: "Pacifico";
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  margin-top: 35px;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  border-bottom: #990011 10px solid;
+  opacity: 0; /* Set initial opacity to 0 */
+  animation: fadeInUp 0.5s ease-in-out 0.8s forwards;
+}
+.main-div .slogan .first {
+  font-size: 39px;
+  position: relative;
+  overflow: hidden;
+}
+.main-div .slogan .first small {
+  font-size: 39px;
+  color: #990011;
+}
+.main-div .slogan .second {
+  font-size: 29px;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.main-div .slogan small {
+  font-size: 25px;
+  color: #990011;
+}
+.main-div .img-div img {
+  width: 350px;
+  margin-top: 120px;
+  animation: moveImage 2s infinite;
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(100px);
+  }
+}
+@keyframes moveImage {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    /* Starting and ending position, no translation */
+  }
+  50% {
+    transform: translateY(10px) translateX(0);
+    /* Midway point, translate the image vertically by 10px */
+  }
+}
+.main-div .typebox {
+  opacity: 0; /* Set initial opacity to 0 */
+  transform: translateY(110px);
+  animation: fadeInUp 0.4s ease-in-out 0.3s forwards;
+  min-width: 20px;
+  min-height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 18px;
+  border-bottom: 3px solid #990011;
+}
+.main-div .typebox h2 {
+  font-family: "pacifico", sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+.main-div .typebox h2 span {
+  color: #990011;
+}
+@media (min-width: 500px) {
+  .main-div .img-div img {
+    width: 450px;
+  }
+  .main-div .typebox h2 {
+    font-family: "pacifico";
+    font-size: 30px;
+  }
+  .main-div .slogan {
+    height: 220px;
+  }
+}/*# sourceMappingURL=home.css.map */

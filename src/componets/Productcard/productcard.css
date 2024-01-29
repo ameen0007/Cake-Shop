@@ -1,0 +1,138 @@
+.section3.mode {
+  background-color: rgb(16, 15, 15);
+}
+.section3.mode .productcardmain h1 {
+  color: #Fcf6f5;
+}
+.section3.mode .productcardmain .showimg {
+  background-color: #Fcf6f5;
+}
+.section3.mode .productcardmain h2 {
+  color: #Fcf6f5;
+}
+.section3.mode .productcardmain .card-div .inside-card {
+  background-color: rgb(16, 15, 15);
+}
+
+.section3 {
+  width: 100%;
+  padding: 0px 20px;
+  background-color: #Fcf6f5;
+  box-sizing: border-box;
+  padding-bottom: 30px;
+}
+.section3 .productcardmain {
+  width: 100%;
+  padding-top: 20px;
+}
+.section3 .productcardmain .h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section3 .productcardmain .h1 h1 {
+  text-align: center;
+  font-size: 23px;
+  font-family: sans-serif;
+  display: inline-block; /* Set display to inline-block */
+  border-bottom: 1px solid #990011;
+}
+.section3 .productcardmain .card-div {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(94%, 1fr));
+}
+@media (min-width: 700px) {
+  .section3 .productcardmain .card-div {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(47%, 1fr));
+  }
+}
+@media (min-width: 1500px) {
+  .section3 .productcardmain .card-div {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22%, 1fr));
+  }
+}
+.section3 .productcardmain .card-div .inside-card {
+  background-color: #Fcf6f5;
+  margin-bottom: 35px;
+}
+.section3 .productcardmain .card-div .inside-card .imagediv {
+  width: 100%;
+  min-height: 290px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.section3 .productcardmain .card-div .inside-card .imagediv .showimg {
+  border-radius: 20px;
+  margin-top: 10px;
+  width: 240px;
+  min-height: 250px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 20px;
+}
+.section3 .productcardmain .card-div .inside-card .imagediv .showimg img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
+  min-height: 100%;
+}
+.section3 .productcardmain .card-div .inside-card h2 {
+  margin-bottom: 10px;
+  margin-left: 55px;
+  font-size: 23px;
+  font-family: sans-serif;
+  text-align: start;
+}
+.section3 .productcardmain .card-div .inside-card .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  padding: 0px 30px;
+}
+.section3 .productcardmain .card-div .inside-card .btn button {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #990011;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: 10px 25px;
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: 100%;
+}
+.section3 .productcardmain .card-div .inside-card .btn button:hover,
+.section3 .productcardmain .card-div .inside-card .btn button:focus {
+  background-color: red;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+.section3 .productcardmain .card-div .inside-card .btn button:hover {
+  transform: translateY(-1px);
+}
+.section3 .productcardmain .card-div .inside-card .btn button:active {
+  background-color: red;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}/*# sourceMappingURL=productcard.css.map */

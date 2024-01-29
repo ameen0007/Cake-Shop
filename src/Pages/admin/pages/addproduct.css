@@ -1,0 +1,48 @@
+.full-star,
+.half-star {
+  color: yellow;
+}
+
+.empty-star {
+  color: #ccc; /* or any other color for empty stars */
+}
+
+.add-product-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.add-product-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.add-product-container form {
+  display: flex;
+  flex-direction: column;
+}
+.add-product-container form label {
+  margin-bottom: 10px;
+}
+.add-product-container form label input,
+.add-product-container form label textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+.add-product-container form button {
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.add-product-container form button:hover {
+  background-color: #2980b9;
+}/*# sourceMappingURL=addproduct.css.map */

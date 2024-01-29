@@ -1,0 +1,93 @@
+.order-container {
+  width: 100%;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.order-container h1 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-family: sans-serif;
+}
+
+.order-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+  background-color: rgb(207, 222, 222);
+  margin-top: 20px;
+  padding: 7px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.item-container button {
+  align-items: center;
+  background-color: #cb1515;
+  border: 0;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+.item-container button:hover,
+.item-container button:focus {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+.item-container button:active {
+  background: #09223b;
+  color: rgba(255, 255, 255, 0.7);
+}
+.item-container button:disabled {
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.img-container {
+  width: 130px;
+  border-radius: 20px;
+}
+.img-container img {
+  width: 100%;
+  border-radius: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.details h2 {
+  text-align: center;
+  font-family: sans-serif;
+}
+.details p {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 16px;
+}/*# sourceMappingURL=orders.css.map */

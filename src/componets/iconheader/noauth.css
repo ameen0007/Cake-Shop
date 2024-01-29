@@ -1,0 +1,29 @@
+.noauthmaindiv.mode {
+  background-color: rgb(16, 15, 15);
+}
+
+.noauthmaindiv {
+  width: 100%;
+  min-height: 60px;
+  padding: 10px 30px;
+  background-color: #fcf6f5;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  border-bottom: 2px solid #a80417;
+}
+.noauthmaindiv .imgcon img {
+  width: 62px;
+  height: 55px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-top: 10px;
+}
+.noauthmaindiv .dark {
+  margin-top: 14px;
+}
+.noauthmaindiv .dark span {
+  font-size: 40px;
+  color: #a80417;
+}/*# sourceMappingURL=noauth.css.map */

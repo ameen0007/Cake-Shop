@@ -1,0 +1,50 @@
+// Dashboardtab.scss
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0px 20px;
+  }
+  
+  .add-product-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  
+    button {
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+  
+      &:hover {
+        background-color: #2980b9;
+      }
+  
+      /* Add space between icon and text */
+      span {
+        margin-left: 5px;
+      }
+    }
+    h2{
+      text-align: center;
+    }
+   
+ 
+    
+    
+  }
+  .dashboardtabs{
+    width: 100%;
+    padding: 15px;
+    background-color: #2980b9;
+    display: flex;
+    justify-content: space-between;
+  }

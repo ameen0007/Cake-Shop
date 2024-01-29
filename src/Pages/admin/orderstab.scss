@@ -1,0 +1,28 @@
+
+  
+  h2{
+    margin-top: 10px;
+    font-family: sans-serif;
+  }
+  .Orderstab-Container {
+    display: flex ;
+   font-size: 18px ;
+   font-family: sans-serif ;
+   flex-direction: column ;
+   justify-content: center ;
+   align-items: center;
+   border-radius: 15px;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-top: 30px;;
+    margin-bottom: 40px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    border: 1px solid #a7a3a3;
+    p{
+      margin-top: 10px;
+      font-family: sans-serif;
+      border-bottom: 1px solid #a7a3a3 ;
+     text-align: center;
+    }
+  }

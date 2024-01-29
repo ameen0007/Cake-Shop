@@ -1,0 +1,271 @@
+$white-color: #fcf6f5;
+$black: rgb(16, 15, 15);
+$red: #a80417;
+
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Lexend&family=Pacifico&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Pacifico&family=Roboto&display=swap');
+
+.main-login-card.mode {
+    background-color: $black;
+    color: $white-color;
+
+    .login-card {
+        box-shadow: rgba(92, 91, 91, 0.56) 0px 22px 70px 4px;
+
+        form {
+            input {
+                color: white;
+            }
+        }
+    }
+}
+
+.main-login-card {
+    background-color: $white-color;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    font-family: 'Fugaz One', sans-serif;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .popupmessage {
+        width: 200px;
+        height: 100px;
+        background-color: aqua;
+        top: 50%;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        opacity: 0;
+        transform: scale(0.5);
+        animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    .back {
+        width: auto;
+        position: absolute;
+        justify-content: flex-start;
+        padding: 20px 10px;
+        top: 100px;
+        left: 20px;
+        overflow: hidden;
+
+        span {
+            font-size: 28px;
+            margin-left: 13px;
+            cursor: pointer;
+            color: #a80417;
+            overflow: hidden;
+        }
+    }
+
+    .login-card {
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        padding: 35px 25px;
+        width: 325px;
+        border-radius: 8px;
+        margin-top: 90px;
+        text-align: center;
+        min-height: 380px;
+        border: 4px solid $red;
+        position: relative;
+
+        h2 {
+            font-size: 28px;
+            padding-bottom: 10px;
+            width: 50%;
+            margin: auto;
+            margin-bottom: 30px;
+            border-bottom: 2px solid $red;
+            font-weight: 500;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            label {
+                text-align: left;
+                font-weight: 400;
+            }
+
+            input {
+                padding: 6px;
+                margin-bottom: 10px;
+                background-color: transparent;
+                font-size: 15px;
+                border: none;
+                font-weight: 400;
+                border-bottom: 2px solid $red;
+                outline: none;
+                color: black;
+                font-family: 'Fugaz One', sans-serif;
+            }
+
+            button {
+                margin-top: 30px;
+                background-color: $red;
+                color: $white-color;
+                padding: 10px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                font-family: 'Fugaz One', sans-serif;
+
+                &:hover {
+                    background-color: red;
+                }
+            }
+
+            .sign {
+                margin-top: 25px;
+                margin-bottom: 5px;
+
+                span {
+                    font-size: 13px;
+                    cursor: pointer;
+                }
+
+                small {
+                    font-size: 13px;
+                    color: $red;
+
+                    &:hover {
+                        color: red;
+                    }
+                }
+            }
+
+            .forget {
+                span {
+                    font-size: 13px;
+                    color: #a80417;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 700px) {
+        .login-card {
+            width: 340px;
+        }
+    }
+
+    @media (min-width: 1000px) {
+        .login-card {
+            width: 350px;
+            margin-top: 200px;
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup {
+  background: white;
+  width: auto;
+  font-size: 25px;
+  color: rgb(53, 52, 52);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup.active {
+  transform: translateY(0);
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+   button{
+    
+  background: #f20c04;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 27px;
+  outline: 0;
+  padding: 7px 10px;
+  margin: 20px 0px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+button:hover,
+button:active {
+  
+  background-position: 0 0;
+  color: #890c07;
+}
+
+button:active {
+  opacity: .5;
+}
+   }
+
+
+.close-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

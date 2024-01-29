@@ -1,0 +1,35 @@
+$white-color: #fcf6f5;
+$black: rgb(16, 15, 15);
+$red: #a80417;
+
+
+.noauthmaindiv.mode{
+    background-color: $black;
+}
+
+.noauthmaindiv{
+    width: 100%;
+    min-height: 60px;
+    padding: 10px 30px;
+    background-color: $white-color;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    border-bottom: 2px solid $red;
+    .imgcon img{
+        width: 62px;
+        height: 55px;
+        object-fit: contain;
+        margin-top: 10px;
+    }
+    .dark {
+    margin-top: 14px;
+    span{
+        font-size: 40px;
+       color: #a80417;
+      
+    }
+}
+
+}

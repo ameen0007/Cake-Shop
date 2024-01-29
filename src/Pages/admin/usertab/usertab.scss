@@ -1,0 +1,23 @@
+
+  
+  h2{
+    font-family: sans-serif;
+  }
+  .UsersTab-Container {
+    display: flex ;
+   font-size: 18px ;
+   font-family: sans-serif ;
+   flex-direction: column ;
+   justify-content: center ;
+   align-items: center;
+   
+    box-sizing: border-box;
+    margin-top: 10px;;
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    border: 1px solid #a7a3a3;
+    p{
+      margin-top: 10px;
+      border-bottom: 1px solid #a7a3a3 ;
+  
+    }
+  }

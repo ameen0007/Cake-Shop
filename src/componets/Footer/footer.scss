@@ -1,0 +1,40 @@
+footer {
+    
+    background-color: #333;
+    color: #fff;
+     padding: 29px 0px;
+    }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .footer-section {
+    text-align: center;
+  
+    h3 {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      font-family: sans-serif;
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+  
+      li {
+        margin-bottom: 8px;
+        cursor: pointer;
+        font-family: sans-serif;
+      }
+    }
+  }
+  
+  // Media Query for responsiveness
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+    }
+  }

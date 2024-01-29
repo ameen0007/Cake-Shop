@@ -1,0 +1,63 @@
+// OrderModal.scss
+.order-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  
+    &.open {
+      display: block;
+    }
+  
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+      h2 {
+        text-align: center;
+      }
+  
+      label {
+        display: block;
+        margin: 15px 0;
+  
+        input {
+          width: 100%;
+          padding: 8px;
+          box-sizing: border-box;
+        }
+      }
+  
+      button {
+        background-color: #27ae60;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: #218c54;
+        }
+      }
+    }
+  
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+  

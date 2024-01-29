@@ -1,0 +1,45 @@
+// AdminDashboard.scss
+.admin-dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0px 20px;
+  
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  
+    .dashboard-item {
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+      .icon {
+        font-size: 2em;
+        margin-right: 10px;
+      }
+  
+      .info {
+        flex: 1;
+  
+        h3 {
+          font-size: 1.2em;
+          margin-bottom: 5px;
+        }
+  
+        p {
+          font-size: 0.9em;
+          color: #888;
+        }
+      }
+    }
+  }
+  

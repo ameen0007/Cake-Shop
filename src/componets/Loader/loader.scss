@@ -1,0 +1,30 @@
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999999; // Ensure it's above other elements
+
+  &::before {
+    content: '';
+    position: absolute; // Change to absolute
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    z-index: -1; // Place the pseudo-element below the loader
+    pointer-events: none; // Allow interactions with elements underneath
+  }
+
+  // Additional styles for the loader container
+}
+
+.blurred::before {
+  backdrop-filter: blur(20px); // Adjust the blur intensity as needed
+}
+

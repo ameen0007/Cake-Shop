@@ -50,7 +50,7 @@ export const Home  = () =>{
        
         <div className={darkmode}>
            <div className='img-div'>
-            <img src="src\assets\cupcake.png" alt="" />
+            <img src="cupcake.png" alt="" />
            </div>
            
            <div className='typebox'>

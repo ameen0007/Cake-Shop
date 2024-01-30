@@ -52,7 +52,7 @@ export const Home  = () =>{
            <div className='img-div'>
             <img src="src\assets\cupcake.png" alt="" />
            </div>
-           <span><Loader/></span>
+           
            <div className='typebox'>
             <h2>We Have <span>{text}</span><Cursor/> Cake</h2>
             

@@ -18,6 +18,7 @@ import { ProductCard } from '../../componets/productcard/Productard'
 
 
 
+
 export const Home  = () =>{
     
   const {mode} = useContext(Apicontext)
@@ -66,7 +67,7 @@ export const Home  = () =>{
           
         </div>
         <Filter/>
-     <ProductCard/>
+        <ProductCard/>
         <Footer/>
         </>
         </Transition>

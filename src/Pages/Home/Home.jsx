@@ -10,7 +10,7 @@ import { Footer } from '../../componets/Footer/Footer'
 import { useDispatch, useSelector } from 'react-redux'
 import { addtocart, deletefromcart } from '../../Redux/cartSlice'
 import { Transition } from '../../componets/Animation/Transition'
-import { Loader } from '../../componets/Loader/Loader'
+
 import { ProductCard } from '../../componets/productcard/Productard'
 
 

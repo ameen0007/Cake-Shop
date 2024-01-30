@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import "./Productcard.scss";
+import "./productcard.scss";
 import classNames from "classnames";
 import { Apicontext } from "../Context/Context";
 import { useDispatch, useSelector } from "react-redux";

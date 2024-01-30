@@ -7,7 +7,7 @@ import { addtocart } from "../../Redux/cartSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-export const Productcard = () => {
+export const ProductCard = () => {
   const {
     mode,
     setMode,

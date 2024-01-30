@@ -5,12 +5,15 @@ import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import { Apicontext } from '../../componets/Context/Context'
 import classNames from 'classnames'
 import { Filter } from '../../componets/Filter/Filter'
-import {  Productcard } from '../../componets/Productcard/Productcard'
+
 import { Footer } from '../../componets/Footer/Footer'
 import { useDispatch, useSelector } from 'react-redux'
 import { addtocart, deletefromcart } from '../../Redux/cartSlice'
 import { Transition } from '../../componets/Animation/Transition'
 import { Loader } from '../../componets/Loader/Loader'
+import { ProductCard } from '../../componets/productcard/Productard'
+
+
 
 
 
@@ -62,7 +65,7 @@ export const Home  = () =>{
           
         </div>
         <Filter/>
-        <Productcard/>
+    <   <ProductCard/>
         <Footer/>
         </>
         </Transition>

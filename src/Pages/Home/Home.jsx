@@ -65,7 +65,7 @@ export const Home  = () =>{
           
         </div>
         <Filter/>
-    <   <ProductCard/>
+      <ProductCard/>
         <Footer/>
         </>
         </Transition>

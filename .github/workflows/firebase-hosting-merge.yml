@@ -1,5 +1,4 @@
 name: Deploy to Firebase Hosting on merge
-
 on:
   push:
     branches:
@@ -8,20 +7,19 @@ on:
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
-          node-version: 20
+          node-version: 14
 
       - name: Install Dependencies
         run: npm install
 
       - name: Install Vite
-        run: npm install --save-dev vite
+        run: npm install -g vite
 
       - name: Build
         run: npm run build

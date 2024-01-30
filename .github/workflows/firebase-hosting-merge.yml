@@ -21,7 +21,7 @@ jobs:
         run: npm install
 
       - name: Install Vite
-        run: npm install --save-dev vite
+        run: npm install -g vite
 
       - name: Build
         run: npm run build

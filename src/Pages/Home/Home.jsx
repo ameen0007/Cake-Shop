@@ -10,8 +10,8 @@ import { Footer } from '../../componets/Footer/Footer'
 import { useDispatch, useSelector } from 'react-redux'
 import { addtocart, deletefromcart } from '../../Redux/cartSlice'
 import { Transition } from '../../componets/Animation/Transition'
+import { ProductCard } from '../../componets/productcard/ProductCard'
 
-import { ProductCard } from '../../componets/productcard/Productard'
 
 
 
@@ -67,7 +67,7 @@ export const Home  = () =>{
           
         </div>
         <Filter/>
-        <ProductCard/>
+      <ProductCard/>
         <Footer/>
         </>
         </Transition>

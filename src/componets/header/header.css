@@ -1,14 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=&display=swap");
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  outline: 1px solid black;
   text-decoration: none;
   list-style-type: none;
 }
 
 .nav.mode {
   background-color: rgb(16, 15, 15);
+  box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
 }
 .nav.mode .left-div {
   background-color: rgb(16, 15, 15);
@@ -21,8 +24,8 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: #fcf6f5;
-  border-bottom: 2px solid #a80417;
+  box-shadow: rgb(248, 181, 181) 0px 20px 30px -10px;
+  border-bottom: 1px solid #b52d3d;
   position: relative;
   z-index: 1;
   opacity: 0;
@@ -194,21 +197,22 @@
     color: #fcf6f5;
   }
   .nav {
+    margin: 0px;
     display: flex;
     justify-content: space-between;
     padding: 0px 15px;
     position: relative;
     position: fixed;
     background-color: #fcf6f5;
+    height: 70px;
   }
   .nav .image {
-    width: 70px;
-    height: 70px;
-    margin-top: 12px;
+    width: 50px;
+    height: 65px;
   }
   .nav .image img {
-    width: 62px;
-    height: 55px;
+    width: 100%;
+    height: 100%;
     -o-object-fit: contain;
        object-fit: contain;
   }
@@ -224,6 +228,51 @@
     overflow: hidden;
     transform: translateY(-100%);
     transition: transform ease 0.5s;
+  }
+  .nav .left-div .delete {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .nav .left-div .delete button {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    background-color: transparent;
+    border: 2px solid #1A1A1A;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #3B3B3B;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    padding: 10px 20px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+    -moz-user-select: none;
+         user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+  }
+  .nav .left-div .delete button:disabled {
+    pointer-events: none;
+  }
+  .nav .left-div .delete button:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  .nav .left-div .delete button:active {
+    box-shadow: none;
+    transform: translateY(0);
   }
   .nav .left-div ul {
     display: flex;
@@ -332,7 +381,7 @@
     font-size: 40px;
     margin-top: 14px;
     margin-left: 10px;
-    color: #d00018;
+    color: #a80417;
     overflow: hidden;
   }
   .nav .dark .usericon {
@@ -346,10 +395,11 @@
   .nav .dark .usericon small {
     max-width: 120px;
     margin-right: 10px;
+    color: #a80417;
     font-size: 13px;
-    margin-bottom: 1px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    font-weight: 700;
     position: absolute;
     bottom: 0;
   }

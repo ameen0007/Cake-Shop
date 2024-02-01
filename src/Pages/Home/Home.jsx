@@ -51,7 +51,7 @@ export const Home  = () =>{
        
         <div className={darkmode}>
            <div className='img-div'>
-            <img src="cupcake.png" alt="" />
+            <img src="cupcake.png" alt="" loading="lazy" />
            </div>
            
            <div className='typebox'>
@@ -59,14 +59,13 @@ export const Home  = () =>{
             
         </div>
            <div className='slogan'>
-              <span className='first '>"Every Person Is <small>Unique</small></span>
-              <br />
-              <br />
+              <span className='first '>"Every Person Is <small>Unique <br /></small></span>
+              
               <span className='second '>Why Shouldn`t Their <small>Cake</small> Be ?"</span>
            </div>
           
         </div>
-        <Filter/>
+        
       <ProductCard/>
         <Footer/>
         </>

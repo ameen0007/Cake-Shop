@@ -10,6 +10,7 @@ import { sendPasswordResetEmail } from 'firebase/auth';
 import { toast } from 'react-toastify';
 import { Loader } from '../../componets/Loader/Loader';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import { Header } from '../../componets/header/Header';
 
 export const Forget = () => {
   const navigate = useNavigate();
@@ -60,16 +61,10 @@ export const Forget = () => {
 
   return (
     <Transition>
+      <Header/>
       <div className={darkmode}>
-        <Noauthheader />
-        <div className='back'>
-          <div>
-            <span onClick={() => navigate('/')}><IoArrowBackCircle /></span>
-          </div>
-          <div>
-            <small onClick={() => navigate('/')} >To Home</small>
-          </div>
-        </div>
+        
+        
         <div className="login-card">
           {loading &&
             <Loader />

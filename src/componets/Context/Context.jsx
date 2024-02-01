@@ -11,6 +11,7 @@ export const Modeprovider = ({ children }) => {
   const navigate = useNavigate()
   const [mode, setMode] = useState(true);
   const [loading , setloading] = useState(false)
+  const [profilePic, setProfilePic] = useState(null);
 
   //nickkname state context api
    const [nickname ,setnickname] = useState("")
@@ -258,7 +259,8 @@ const [resultfound,setresultfound]= useState("")
     addProductitems,showpassword,setshowpassword,handlechangebutton,
     getproductdata,editproduct,updateproduct,delelteproduct,
     order,getOrderData, updateOrderStatus,user,searchkey,setsearchkey
-    ,filtertype,setfiltertype,filterprice,setfilterprice,setresultfound,resultfound}}>
+    ,filtertype,setfiltertype,filterprice,setfilterprice,setresultfound,resultfound,
+    profilePic,setProfilePic}}>
       {children}
     </Apicontext.Provider>
   );

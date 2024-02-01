@@ -12,11 +12,16 @@ import { Authcontext } from "../contexts/Authcontext";
 import { toast } from "react-toastify";
 import { FaCircleUser } from "react-icons/fa6";
 import { useSelector } from "react-redux";
+import { auth, fireDB } from "../../firebase/Firebase.config";
+import { Loader } from "../Loader/Loader";
+import { collection, deleteDoc, doc, getDocs, query, where, writeBatch } from "firebase/firestore";
+import { deleteObject, getStorage, ref ,getDownloadURL, list} from "firebase/storage";
+import { getAuth, reauthenticateWithCredential, EmailAuthProvider, deleteUser } from "firebase/auth";
 
 export const Header = () => {
   const navigate = useNavigate();
 
-  const { mode, setMode, changemode, nickname, setnickname } =
+  const { mode, setMode, changemode, loading,nickname, setnickname ,profilePic,setProfilePic,setloading} =
     useContext(Apicontext);
   const { authuser, setAuthuser, authadmin, setAuthadmin } =
     useContext(Authcontext);
@@ -30,7 +35,10 @@ const cartitem = useSelector((state)=> state.cart)
     const storedNickname = localStorage.getItem("nickname");
     localStorage.getItem("user");
     const storedAdmin = localStorage.getItem("isAdmin");
-  
+    const storedPhotoURL = localStorage.getItem("photoURL");
+    if (storedPhotoURL){
+      setProfilePic(storedPhotoURL)
+    }
     if (storedNickname) {
       setnickname(storedNickname);
     }
@@ -41,6 +49,95 @@ const cartitem = useSelector((state)=> state.cart)
     }
   }, []);
 
+  const promptUserForReauthentication = async () => {
+    return new Promise((resolve, reject) => {
+      const password = prompt("Please enter your password to confirm account deletion:");
+      
+      if (password !== null && password !== "") {
+        resolve(password);
+      } else {
+        reject(new Error("Password is required."));
+      }
+    });
+  };
+  
+  const reauthenticateUser = async (user, password) => {
+    const credentials = EmailAuthProvider.credential(user.email, password);
+  
+    try {
+      await reauthenticateWithCredential(user, credentials);
+      console.log("Reauthentication successful!");
+    } catch (error) {
+      if(error === 'auth/invalid-credential'){
+        toast.error("Incorrect Password")
+      }
+      throw error;
+    }
+  };
+  
+  const deleteAccount = async () => {
+    try {
+      setloading(true); // Set loading to true
+  
+      const auth = getAuth();
+      const user = auth.currentUser;
+  
+      // Prompt user for re-authentication
+      const password = await promptUserForReauthentication();
+      await reauthenticateUser(user, password);
+  
+      // Delete profile picture first
+      const profilePicURL = user.photoURL;
+      if (profilePicURL) {
+        const profilePicRef = ref(getStorage(), profilePicURL);
+        await deleteObject(profilePicRef);
+      }
+  
+      // Create a batch for other deletions
+      const batch = writeBatch(fireDB);
+  
+      // Query the users collection to find the document with the user's UID
+      const usersCollectionRef = collection(fireDB, 'users');
+      const q = query(usersCollectionRef, where("uid", "==", user.uid));
+      const querySnapshot = await getDocs(q);
+  
+      // Loop through the query results (should be only one result)
+      querySnapshot.forEach((doc) => {
+        // Get the document reference
+        const userDocRef = doc.ref;
+  
+        // Add delete operation for the user document to the batch
+        batch.delete(userDocRef);
+      });
+  
+      // Commit the batch
+      await batch.commit();
+  
+      // Delete user account
+      await deleteUser(user);
+  
+      // Clear local storage or perform other necessary actions
+      localStorage.clear();
+  
+      // Set states or perform other necessary actions
+      setAuthadmin(false);
+      setAuthuser(false);
+      setnickname("");
+      setProfilePic(""); // Clear profile picture if needed
+  
+      // Navigate or show success message
+      toast.success("Account deleted successfully!");
+      navigate("/");
+      toggleswitch()
+    } catch (error) {
+      if(error.code === 'auth/invalid-credential'){
+        toast.error("Incorrect Password")
+      }
+    } finally {
+      setloading(false); // Set loading to false regardless of success or error
+    }
+  };
+  
   const handleLinkClick = (path) => {
     setActiveLink(path);
     settoggle(!toggle);
@@ -68,8 +165,9 @@ const cartitem = useSelector((state)=> state.cart)
 
   return (
     <div className={darkmode}>
+      
       <div className="image">
-        <img src="src\assets\logo1.png" alt="" />
+        <img src="logo1.png" alt="" />
       </div>
       <div className={toggleclass}>
         {!toggle && (
@@ -116,15 +214,25 @@ const cartitem = useSelector((state)=> state.cart)
             Contact Us
           </li>
         </ul>
+        {loading && <Loader/>}
         {authuser ? (
+          <>
           <div className="btn1">
             <button onClick={handleLogout}>Logout</button>
           </div>
+          <div className="delete">
+          <button onClick={deleteAccount} ><span>Delete My Account</span> </button>
+          
+          </div>
+          </>
         ) : (
           <div className="btn1">
             <button onClick={() => handleLinkClick("/Login")}> Login</button>
           </div>
         )}
+       
+        
+       
       </div>
       <div className="dark">
         <>
@@ -169,7 +277,8 @@ const cartitem = useSelector((state)=> state.cart)
                   style={{
                     fontSize: "35px",
                     marginTop: "25px",
-                    color: "#a80417",
+                    color: "a80417",
+                    zIndex : '-90',
                   }}
                 />
                 </li> 
@@ -188,7 +297,12 @@ const cartitem = useSelector((state)=> state.cart)
               <div className="usericon">
                 <div className="innericon">
                   <span onClick={toggleswitch}>
-                    <FaCircleUser style={{ fontSize: "38px" }} />
+                    {profilePic ? (
+                      <img style={{width : '40px',height:"40px",borderRadius:'100%',border : '1px solid #a80417',objectFit :'contain',marginBottom:'3px'}} src={profilePic} alt="" />
+                    ):(
+                      <FaCircleUser style={{ fontSize: "32px" ,marginBottom:'3px'}} />
+                    )}
+                   
                   </span>
                 </div>
                 {nickname && (

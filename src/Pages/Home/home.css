@@ -50,8 +50,8 @@
   color: #990011;
 }
 .main-div .img-div img {
-  width: 350px;
-  margin-top: 120px;
+  width: 300px;
+  margin-top: 100px;
   animation: moveImage 2s infinite;
 }
 @keyframes fadeInUp {
@@ -84,12 +84,12 @@
   flex-direction: column;
   align-items: center;
   margin-top: 18px;
-  border-bottom: 3px solid #990011;
 }
 .main-div .typebox h2 {
   font-family: "pacifico", sans-serif;
   font-size: 25px;
   font-weight: 500;
+  border-bottom: 3px solid #990011;
 }
 .main-div .typebox h2 span {
   color: #990011;

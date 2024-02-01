@@ -14,13 +14,15 @@ import { auth } from '../../firebase/Firebase.config';
 import { toast } from 'react-toastify';
 import { Loader } from '../../componets/Loader/Loader';
 import { Authcontext } from '../../componets/contexts/Authcontext';
+import { Header } from '../../componets/header/Header';
 
 
 export const Login   = () => {
   
   const navigate = useNavigate()
   const inputRef = useRef(null);
-  const {mode,loading,setloading,setnickname,nickname} = useContext(Apicontext)
+  const {mode,loading,setloading,setnickname,nickname,profilePic,
+    setProfilePic,} = useContext(Apicontext)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const {authuser,setAuthuser,setAuthadmin} = useContext(Authcontext)
@@ -58,6 +60,18 @@ export const Login   = () => {
         } catch (error) {
           console.error('Error updating profile:', error);
         }
+        
+        if (auth.currentUser.photoURL) {
+           const profilepic = auth.currentUser.photoURL
+           console.log(profilePic,"profile pic");
+          localStorage.setItem("photoURL", profilepic);
+          setProfilePic(profilepic)
+        }
+        
+
+
+
+          
   
         
         toast.success('Login successful');
@@ -84,20 +98,10 @@ export const Login   = () => {
   const darkmode = classNames("main-login-card",{"mode":!mode})
   return (
   <Transition>
-    
+    <Header/>
 <div  className={darkmode} 
 >
-<Noauthheader/>
 
-  <div className='back'>
-    <div className='con1'>
-    <span onClick={()=> navigate('/')}><IoArrowBackCircle/></span>
-    </div>
-    <div className='con2'>
-      <small onClick={()=> navigate('/')} >To Home</small>
-    </div>
-    
-  </div>
 <div className="login-card">
     <h2>Login</h2>
     <form onSubmit={handleLogin}>

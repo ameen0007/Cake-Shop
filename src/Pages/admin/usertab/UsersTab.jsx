@@ -6,7 +6,7 @@ import { auth } from '../../../firebase/Firebase.config';
 export const UsersTab = () => {
   
   
-  const { getOrderData, loading, user, setloading } = useContext(Apicontext);
+  const { getOrderData, loading, user, setloading , nickname } = useContext(Apicontext);
   console.log(user);
   const formatTimestamp = (timestamp) => {
     const dateObject = timestamp.toDate();
@@ -17,7 +17,7 @@ export const UsersTab = () => {
     });
   };
 
-  const name = auth.currentUser.displayName
+  
   return (
     <div>
        <h2>Users</h2>
@@ -26,7 +26,7 @@ export const UsersTab = () => {
    
     <div key={index} className='UsersTab-Container'>
       <p>No: {index +1}</p>
-      <p>Name: {name} {item.name}</p>
+      <p>Name: {item.name}</p>
       
       <p>Email: {item.email}</p>
       <p>Date:{formatTimestamp(item.time)}</p>

@@ -30,7 +30,7 @@ $red: #a80417;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+   
     .popupmessage {
         width: 200px;
         height: 100px;
@@ -45,43 +45,28 @@ $red: #a80417;
         animation: fadeIn 0.3s ease-out forwards;
     }
 
-    .back {
-        width: auto;
-        position: absolute;
-        justify-content: flex-start;
-        padding: 20px 10px;
-        top: 100px;
-        left: 20px;
-        overflow: hidden;
 
-        span {
-            font-size: 28px;
-            margin-left: 13px;
-            cursor: pointer;
-            color: #a80417;
-            overflow: hidden;
-        }
-    }
 
     .login-card {
         box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
         padding: 35px 25px;
-        width: 325px;
+        width: 300px;
         border-radius: 8px;
-        margin-top: 90px;
+       
         text-align: center;
-        min-height: 380px;
+        min-height: 360px;
         border: 4px solid $red;
         position: relative;
 
         h2 {
-            font-size: 28px;
+            font-size: 25px;
             padding-bottom: 10px;
             width: 50%;
             margin: auto;
             margin-bottom: 30px;
             border-bottom: 2px solid $red;
-            font-weight: 500;
+            font-weight: 400;
+            font-family:'Fugaz One' ;
         }
 
         form {
@@ -103,7 +88,7 @@ $red: #a80417;
                 border-bottom: 2px solid $red;
                 outline: none;
                 color: black;
-                font-family: 'Fugaz One', sans-serif;
+                font-family:  sans-serif;
             }
 
             button {

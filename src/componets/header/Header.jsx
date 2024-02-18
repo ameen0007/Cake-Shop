@@ -21,7 +21,7 @@ import { getAuth, reauthenticateWithCredential, EmailAuthProvider, deleteUser } 
 export const Header = () => {
   const navigate = useNavigate();
 
-  const { mode, setMode, changemode, loading,nickname, setnickname ,profilePic,setProfilePic,setloading} =
+  const { mode, setMode, changemode, loading,nickname, setnickname ,profilePic,setProfilePic,setloading,order} =
     useContext(Apicontext);
   const { authuser, setAuthuser, authadmin, setAuthadmin } =
     useContext(Authcontext);
@@ -30,7 +30,10 @@ const cartitem = useSelector((state)=> state.cart)
   const [toggle, settoggle] = useState(true);
 
   const [activeLink, setActiveLink] = useState("/");
-
+  useEffect(() => {
+    // Update active link when location changes
+    setActiveLink(location.pathname);
+  }, [location.pathname]);
   useEffect(() => {
     const storedNickname = localStorage.getItem("nickname");
     localStorage.getItem("user");
@@ -61,6 +64,8 @@ const cartitem = useSelector((state)=> state.cart)
     });
   };
   
+
+
   const reauthenticateUser = async (user, password) => {
     const credentials = EmailAuthProvider.credential(user.email, password);
   
@@ -76,9 +81,11 @@ const cartitem = useSelector((state)=> state.cart)
   };
   
   const deleteAccount = async () => {
+    setloading(true)
     try {
-      setloading(true); // Set loading to true
-  
+      // Set loading to true
+    
+      
       const auth = getAuth();
       const user = auth.currentUser;
   
@@ -86,11 +93,36 @@ const cartitem = useSelector((state)=> state.cart)
       const password = await promptUserForReauthentication();
       await reauthenticateUser(user, password);
   
+      if (order.length > 0) {
+        
+        const userOrderDocs = order.filter((ord) => ord.userid === user.uid);
+       
+      console.log(userOrderDocs,"docs");
+      
+        userOrderDocs.forEach(async (orderDoc) => {
+          try {
+            // Delete the order document
+            await deleteDoc(doc(fireDB, "order", orderDoc.id));
+            console.log(`Order with ID ${orderDoc.id} deleted successfully`);
+          } catch (error) {
+            console.error(`Error deleting order with ID ${orderDoc.id}:`, error);
+          }
+        });
+       
+      }
+
+
       // Delete profile picture first
       const profilePicURL = user.photoURL;
+
       if (profilePicURL) {
-        const profilePicRef = ref(getStorage(), profilePicURL);
-        await deleteObject(profilePicRef);
+        const user = auth.currentUser;
+  
+      const storage = getStorage();
+       const profilePicRef = ref(storage, `profile-pics/${user.uid}`); // Reference to the profile picture based on user's UID
+
+  // Delete the profile picture object from storage
+    await deleteObject(profilePicRef);
       }
   
       // Create a batch for other deletions
@@ -108,7 +140,13 @@ const cartitem = useSelector((state)=> state.cart)
   
         // Add delete operation for the user document to the batch
         batch.delete(userDocRef);
+        
+          
+        
+
       });
+
+
   
       // Commit the batch
       await batch.commit();
@@ -124,17 +162,17 @@ const cartitem = useSelector((state)=> state.cart)
       setAuthuser(false);
       setnickname("");
       setProfilePic(""); // Clear profile picture if needed
-  
+  setloading(false)
       // Navigate or show success message
       toast.success("Account deleted successfully!");
       navigate("/");
       toggleswitch()
+
     } catch (error) {
+      setloading(false)
       if(error.code === 'auth/invalid-credential'){
         toast.error("Incorrect Password")
       }
-    } finally {
-      setloading(false); // Set loading to false regardless of success or error
     }
   };
   
@@ -147,7 +185,7 @@ const cartitem = useSelector((state)=> state.cart)
   const toggleswitch = () => {
     settoggle(!toggle);
   };
-
+   console.log(profilePic,"profile");
   ///setting class to open left-div
   const toggleclass = classNames("left-div", { show: !toggle });
 
@@ -159,7 +197,7 @@ const cartitem = useSelector((state)=> state.cart)
     setAuthuser(false);
     setnickname("");
     settoggle(!toggle);
-    toast.success("Lgout Succesfully..!");
+    toast.success("Logout Succesfully..!");
     navigate("/");
   };
 
@@ -167,7 +205,7 @@ const cartitem = useSelector((state)=> state.cart)
     <div className={darkmode}>
       
       <div className="image">
-        <img src="logo1.png" alt="" />
+        <img src="\logo1.png" alt="" />
       </div>
       <div className={toggleclass}>
         {!toggle && (
@@ -189,14 +227,15 @@ const cartitem = useSelector((state)=> state.cart)
             onClick={() => handleLinkClick("/Products")}
             className={activeLink === "/Products" ? "active" : ""}
           >
-            Products
+           All Products
           </li>
+          {loading && <Loader/>}
           {authuser && (
             <li
               onClick={() => handleLinkClick("/Orders")}
               className={activeLink === "/Orders" ? "active" : ""}
             >
-              Orders
+             My Orders
             </li>
           )}
           {authadmin && (
@@ -207,14 +246,14 @@ const cartitem = useSelector((state)=> state.cart)
               Admin
             </li>
           )}
-          <li
+          {/* <li
             onClick={() => handleLinkClick("/Contact")}
             className={activeLink === "/Contact" ? "active" : ""}
           >
             Contact Us
-          </li>
+          </li> */}
         </ul>
-        {loading && <Loader/>}
+        
         {authuser ? (
           <>
           <div className="btn1">
@@ -276,7 +315,7 @@ const cartitem = useSelector((state)=> state.cart)
                 <FaShoppingCart
                   style={{
                     fontSize: "35px",
-                    marginTop: "25px",
+                    marginTop: "10px",
                     color: "a80417",
                     zIndex : '-90',
                   }}

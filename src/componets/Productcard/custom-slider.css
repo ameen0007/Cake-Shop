@@ -1,0 +1,10 @@
+.slick-slider {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Override styles for individual slides */
+  .slick-slide {
+    margin-right: 10px; /* Set right margin to create a gap */
+  }
+  

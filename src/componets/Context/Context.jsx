@@ -9,7 +9,7 @@ export const Apicontext = createContext();
 
 export const Modeprovider = ({ children }) => {
   const navigate = useNavigate()
-  const [mode, setMode] = useState(true);
+  const [mode, setMode] = useState(false);
   const [loading , setloading] = useState(false)
   const [profilePic, setProfilePic] = useState(null);
 
@@ -94,13 +94,13 @@ export const Modeprovider = ({ children }) => {
    const [product,setproduct] = useState([])
 
    const getproductdata = async ()=>{
-    
+          setloading(true)
       try {
         const q = query(
           collection(fireDB , 'productsitem'),
           orderBy('time')
         )
-
+          
         const data = onSnapshot (q,(Querysnapshot) => {
           let produtcarray = []
           Querysnapshot.forEach((doc)=>{
@@ -108,7 +108,7 @@ export const Modeprovider = ({ children }) => {
           })
           setproduct(produtcarray)
          
-          
+          setloading(false)
         
         })
         
@@ -171,12 +171,6 @@ export const Modeprovider = ({ children }) => {
 
 
 
-  
-   useEffect(() => {
-     getproductdata()
-
-   }, [])
-   
 
    const [order, setOrder] = useState([]);
 

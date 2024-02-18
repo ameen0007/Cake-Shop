@@ -1,313 +1,268 @@
 
+@import "react-alice-carousel/lib/scss/alice-carousel.scss";
 
-$white-color : #Fcf6f5;
-$red : #990011;
+$white-color: #fcf6f5;
+$red: #990011;
 $black: rgb(16, 15, 15);
 
-.section3.mode{
+.section3.mode {
   background-color: $black;
-
-  .productcardmain{
-    
-    h1{
-      color: $white-color;
-    }
-    .showimg{
-      background-color: $white-color;
-    }
-    h2{
-      color: $white-color;
-    }
-    .card-div {
-     
-      .slick-dots li.slick-active button:before {
-        opacity: 1;
-        color: rgb(255, 255, 255);
-    }
- 
-    .slick-dots li button:before {
-        font-family: 'slick';
-        font-size: 6px;
-        line-height: 20px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        height: 20px;
-        content: '•';
-        text-align: center;
-        opacity: .25;
-        color: rgb(255, 255, 255);
+   .inside-card{
+    background-color: $black;
+    .bottom{
       
-
-    }
-      .inside-card{
-        background-color: $black;
-        border: 1px solid #a0444f;
-        
-
+      .rating{
         p{
-          color: #Fcf6f5;
+          color: rgb(229, 225, 225);
         }
-         
-         box-shadow: rgba(158, 161, 162, 0.12) 0px 2px 4px 0px, rgba(181, 189, 192, 0.32) 0px 2px 16px 0px;
-       }
+      }
+      h2{
+        color: rgb(222, 221, 221);
+      }
     }
-   
+   }
+  h1 {
+    color: $white-color;
   }
-}
+  .showimg {
+    background-color: $white-color;
+  }
+  h2 {
+    color: $white-color;
+  }
 
+  p {
+    color: #fcf6f5;
+  }
+
+  box-shadow: rgba(158, 161, 162, 0.12) 0px 2px 4px 0px,
+    rgba(181, 189, 192, 0.32) 0px 2px 16px 0px;
+}
 
 .section3 {
   width: 100%;
- 
-  
   background-color: $white-color;
-  
+ 
   box-sizing: border-box;
   padding-bottom: 30px;
-  .productcardmain {
-    
-    width: 100%;
-    
-    
-    padding-top: 20px;
-    .h1{
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 20px;
+ display: flex;
+ flex-direction: column;
 
-        h1 {
-            text-align: center;
-            font-size: 23px;
-            font-family: sans-serif;
-            display: inline-block; /* Set display to inline-block */
-            border-bottom: 3px solid $red;
-        }
-    }
-    //this the problem 
-  
+ .btncon{
+  width: 100%;
+  min-height: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  button {
+    animation: shake 0.5s infinite; /* Apply the 'shake' animation */
+    
+    width: 50%;
    
-    .card-div{
-       
-      border-bottom: 3px solid #990011;
-        border-top: 3px solid #990011;
-      
- .slick-lis{
-  display: grid;
-  grid-template-columns: 1fr;
-
-  @media (min-width: 700px) {
-    grid-template-columns: repeat(2, 1fr);
-
-    .inside-card{
-      background-color: $white-color;
-      max-width: 300px;
-      position: relative;
-      padding: 25px;
-      border-radius: 20px;
-     margin-left: 30px;
-     margin-top: 10px;
-     margin-bottom: 10px;
-     box-shadow: rgba(0, 0, 0, 1) 0px 5px 15px;
-     border: 2px solid #990011;
+  padding: 15px;
+    border-radius: 10px;
+    border: none;
+    font-family: sans-serif;
+    background-color: #990011;
+     color: #fcf6f5;
+  }
+  
+  button {
+    animation: bounce 0.5s infinite alternate; /* Apply the 'bounce' animation */
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-10px);
     }
   }
-// @media (min-width: 1500px) {
-//     display: grid;
-//     grid-template-columns: repeat(auto-fill, minmax(calc(100% - 3% * 4), 4fr));
-    
-// }
+}
+
+  .h1 {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    h1 {
+      text-align: center;
+      font-size: 23px;
+      font-family: sans-serif;
+      display: inline-block; /* Set display to inline-block */
+      border-bottom: 3px solid $red;
+    }
+  }
 
 
- }
-
-        .slick-dots li.slick-active button:before {
-          opacity: 1;
-          color: rgb(0, 0, 0);
-      }
-   
-      .slick-dots li button:before {
-          font-family: 'slick';
-          font-size: 6px;
-          line-height: 20px;
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 20px;
-          height: 20px;
-          content: '•';
-          text-align: center;
-          opacity: .35;
-          color: rgb(0, 0, 0);
-        
   
-      }
-background-color: #491a12;
+  .alice-carousel{
+   
+    .alice-carousel__prev-btn, .alice-carousel__next-btn {
+      display: none !important;
+    }
+    .alice-carousel__dots-item{
+     background-color: #706e6d;
+      
+    }
+    .alice-carousel__dots-item.__active{
+      
+       background-color: #990011;
+    }
+   
+  }
 
-     
+.inside-card {
+  background-color: $white-color;
+  max-width: 300px;
+  position: relative;
+  margin: auto;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 1) 0px 5px 15px;
+  border: 2px solid #990011;
 
-        
-       
-        
-        .inside-card{
-            background-color: $white-color;
-            max-width: 330px;
-            position: relative;
-            padding: 25px;
-            border-radius: 20px;
-           margin-left: 30px;
-           margin-top: 10px;
-           margin-bottom: 10px;
-           box-shadow: rgba(0, 0, 0, 1) 0px 5px 15px;
-           border: 2px solid #990011;
-            
-            h3{
-              background-color: #990011;
-              position: absolute;
-              padding: 10px 4px;
-              top: 15px;
-              left: 15px;
-              border-radius: 100%;
-              font-size: 14px;
-              color: white;
-              small{
-                font-size: 12px;
-              }
-            }
-            .imagediv{
-              
-                width: 100%;
-                height: 210px;
-               
-                margin-top: 15px;
-                display: flex;
-                justify-content: center;
-                 align-items: center;
-            
-                
+  h3 {
+    background-color: #990011;
+    position: absolute;
+    padding: 10px 4px;
+    top: 15px;
+    left: 15px;
+    border-radius: 100%;
+    font-size: 14px;
+    color: white;
+    small {
+      font-size: 12px;
+    }
+  }
+  .imagediv {
+    width: 100%;
+    height: 180px;
 
-                
-                .showimg{
-                 
-                    border-radius: 20px;
-                  
-                       width: 200px;
-                       height: 200px;
-                       box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-                      
-                       
-                    img{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-                        object-fit: contain;
-                        width: 100%;
-                     height: 100%;
-                        border-radius: 10px;
-                        
-                    }
-                }
-           
-        }
-        .bottom{
-         
-         
-          width: 100%;
-          display: flex;
-          justify-content: flex-start;
-          flex-direction: column;
-          padding: 0px 40px;
-          h2{
-            font-size: 23px;
-         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-         text-align: start;
-        
-        
-        }
-          .inner-bottom{
-             display: flex;
-             justify-content: flex-start;
-             gap: 25px;
-            h2{
-              font-size: 23px;
-           font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-           text-align: start;
-         
-          
-          }
-       
-     
-      }
-      .rating{
-        display: flex;
+    .showimg {
+      border-radius: 20px;
+
+      width: 180px;
+      height: 180px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+      img {
+        object-fit: contain;
         width: 100%;
         height: 100%;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .bottom {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 0px 40px;
+   
+    h2 {
+      font-size: 23px;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      text-align: start;
+     
+    }
+    .inner-bottom {
+
+      
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+      h2 {
+        font-size: 23px;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        text-align: start;
         
-        align-items: center;
-        gap: 5px;
-      p{
+      }
+    }
+    .rating {
+      display: flex;
+      width: 100%;
+      height: 100%;
+
+      align-items: center;
+      gap: 5px;
+      p {
         text-align: center;
         font-size: 16px;
         font-weight: 600;
         margin-top: 4px;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
       }
-       }
-        
-        }
     }
   }
-}
-.btn{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 25px;
-  padding: 0px 30px;
-button{
-align-items: center;
-background-clip: padding-box;
-background-color:$red;
-border: 1px solid transparent;
-border-radius: 10px;
-box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-box-sizing: border-box;
-color: #fff;
-cursor: pointer;
-display: inline-flex;
-font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-font-size: 16px;
-font-weight: 600;
-justify-content: center;
-line-height: 1.25;
-margin: 0;
-min-height: 3rem;
-padding: 10px 25px;
-position: relative;
-text-decoration: none;
-transition: all 250ms;
-user-select: none;
--webkit-user-select: none;
-touch-action: manipulation;
-vertical-align: baseline;
-width: 100%;
-}
-button:hover,
-button:focus {
-background-color: red;
-box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-}
+    .btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 25px;
+      padding: 0px 30px;
+      button {
+        align-items: center;
+        background-clip: padding-box;
+        background-color: $red;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui, -apple-system, system-ui, "Helvetica Neue",
+          Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 3rem;
+        padding: 10px 25px;
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        width: 100%;
+      }
+      button:hover,
+      button:focus {
+        background-color: red;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+      }
 
-button:hover {
-transform: translateY(-1px);
-}
+      button:hover {
+        transform: translateY(-1px);
+      }
 
-button:active {
-background-color: red;
-box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
-transform: translateY(0);
-}
- 
-}
+      button:active {
+        background-color: red;
+        box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+        transform: translateY(0);
+      }
+    }
+  }
 }

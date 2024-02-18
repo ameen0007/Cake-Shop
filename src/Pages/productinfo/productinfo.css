@@ -1,40 +1,97 @@
+.product-info-container.mode {
+  background-color: rgb(16, 15, 15);
+}
+.product-info-container.mode .heading p {
+  color: rgb(216, 205, 205);
+}
+.product-info-container.mode .product-details p {
+  color: rgb(232, 222, 222);
+}
+.product-info-container.mode .product-details h2 {
+  color: rgb(232, 222, 222);
+}
+
 .product-info-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #fcf6f5;
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   align-items: center;
-  padding: 20px;
+  padding: 120px 30px 30px 30px;
 }
 @media (max-width: 768px) {
   .product-info-container {
     flex-direction: column;
   }
 }
+.product-info-container .heading {
+  width: 100%;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #a80417;
+}
+.product-info-container .heading p {
+  text-align: center;
+  font-size: 28px;
+  font-family: sans-serif;
+  font-weight: 600;
+}
 .product-info-container .product-img-container {
-  flex: 1;
+  width: 70%;
 }
 .product-info-container .product-img-container img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
 }
 .product-info-container .product-details {
-  flex: 1;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 20px;
-  text-align: left;
 }
 .product-info-container .product-details h2 {
+  text-align: left;
   font-size: 1.5em;
   margin-bottom: 10px;
+  font-family: sans-serif;
 }
 .product-info-container .product-details p {
-  margin-bottom: 15px;
+  font-family: sans-serif;
+}
+.product-info-container .product-details .rating {
+  display: flex;
+  gap: 5px;
+  margin-top: 12px;
+  align-items: center;
+}
+.product-info-container .product-details .rating p {
+  font-size: 16px;
+  font-family: sans-serif;
 }
 .product-info-container .product-details .price {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #3498db;
-  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-family: sans-serif;
+  align-items: center;
+  font-weight: 700;
+}
+.product-info-container .product-details .price h2 {
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: line-through;
+}
+.product-info-container .product-details .price p {
+  color: #a80417;
+}
+.product-info-container .product-details .price h3 {
+  font-size: 20px;
+  color: #a80417;
+}
+.product-info-container .product-details .price h3 small {
+  font-size: 20px;
 }
 .product-info-container .product-details .add-to-cart-btn {
   padding: 10px 20px;

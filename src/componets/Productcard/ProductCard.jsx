@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addtocart } from "../../Redux/cartSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import Rating from "react-rating-stars-component";
+
 import { FaBoltLightning } from "react-icons/fa6";
 import { Authcontext, Authprovide } from "../contexts/Authcontext";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/scss/alice-carousel.scss";
+import { FaArrowRightLong } from "react-icons/fa6";
+import Rating from "react-rating-stars-component";
 
 
 export const ProductCard = () => {
@@ -34,31 +35,15 @@ export const ProductCard = () => {
   const cartitem = useSelector((state) => state.cart);
   const navigate = useNavigate();
 
-  const filteredProducts = product
-    .filter((obj) => obj.title.toLowerCase().includes(searchkey))
-    .filter((obj) => obj.category.toLowerCase().includes(filtertype))
-    .filter((obj) => {
-      if (filterprice) {
-        const [filterMin, filterMax] = filterprice.split("-").map(Number);
 
-        if (filterprice.includes("Under")) {
-          return obj.price < filterMax;
-        } else if (filterprice.includes("Upto")) {
-          return obj.price >= filterMax;
-        } else {
-          return obj.price >= filterMin && obj.price <= filterMax;
-        }
-      }
-      return true;
-    });
 
-  useEffect(() => {
-    setresultfound(filteredProducts.length === 0);
-  }, [filteredProducts, setresultfound]);
+
+
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartitem));
   }, [cartitem]);
+
 
   const addcart = (product) => {
     if (authuser) {
@@ -72,39 +57,19 @@ export const ProductCard = () => {
       };
 
       dispatch(addtocart(productWithSerializableTimestamp));
+      toast.success("Added to Cart")
     } else {
       navigate("/login");
     }
   };
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3, // Adjust the number of slides to show based on your design
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+ 
 
 
   return (
+    
     <section className={darkmode}>
-      <div className="productcardmain">
+      
         <div className="h1">
           <h1 style={{ marginBottom: "20px" }}>
             Our Trending{" "}
@@ -114,13 +79,22 @@ export const ProductCard = () => {
             Products
           </h1>
         </div>
+        
+        <AliceCarousel
+         autoPlay
+         autoPlayInterval={2000}
+        responsive={{
+          0: { items: 1 },
+          600: { items: 2 },
+          1024: { items: 4 },
+        }}
+        buttonsDisabled={true} 
+        
+           infinite={true} 
+           dotsDisabled={false}
+           stagePadding={{ paddingLeft: 20, paddingRight: 20 }}>
 
-
-
-        {/* //  from // */}
-        <div className="card-div " >
-           <Slider {...settings}>
-            {filteredProducts?.map((data, index) => {
+            {product?.map((data, index) => {
               const currentPrice = data.price;
               const discountPrice = data.discountprice;
               const discountPercentage = ((currentPrice - discountPrice) / currentPrice) * 100;
@@ -165,10 +139,14 @@ export const ProductCard = () => {
                 </div>
               );
             })}
-             </Slider>
-             </div>
-        {/* //  to // */}
-      </div>
-    </section>
+    </AliceCarousel>
+    <div className="btncon">
+      <button onClick={()=>navigate('/Products')} >
+        See All Products<span style={{position:"absolute",top:'29%',color:'white', fontSize:'18px',marginLeft:'5px' }} >< FaArrowRightLong /></span>
+      </button>
+    </div>
+     </section>
+     
+    
   );
 };

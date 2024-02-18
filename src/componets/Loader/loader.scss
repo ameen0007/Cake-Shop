@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: transparent;
   z-index: 99999999; // Ensure it's above other elements
 
   &::before {
@@ -25,6 +26,6 @@
 }
 
 .blurred::before {
-  backdrop-filter: blur(20px); // Adjust the blur intensity as needed
+  backdrop-filter: blur(50px); // Adjust the blur intensity as needed
 }
 

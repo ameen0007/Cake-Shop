@@ -1,47 +1,126 @@
-// ProductInfo.scss
+
+
+$white-color: #fcf6f5;
+$black: rgb(16, 15, 15);
+$red: #a80417;// ProductInfo.scss
+
+.product-info-container.mode{
+  background-color: $black;
+.heading {
+  p{
+    color: rgb(216, 205, 205);
+  }
+}
+.product-details{
+  p{
+    color: rgb(232, 222, 222);
+  }
+  h2{
+    color: rgb(232, 222, 222);
+  }
+}
+
+}
+
 .product-info-container {
+  height: 100vh;
+  width: 100%;
+ background-color: $white-color;
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
     align-items: center;
-    padding: 20px;
+   
+   padding: 120px 30px 30px 30px;
   
     @media (max-width: 768px) {
       flex-direction: column;
     }
+    .heading{
+      width: 100%;
+      
+      margin-bottom: 40px;
+      border-bottom: 2px solid $red;
+      p{
+        text-align: center;
+        font-size: 28px;
+        font-family: sans-serif;
+        font-weight: 600;
+        
+      }
+    }
   
     .product-img-container {
-      flex: 1;
-  
+     width: 70%;
+     
+   
       img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        
+      width: 100%;
+      
+        border-radius: 18px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
       }
     }
   
     .product-details {
-      flex: 1;
+      width: 80%;
+     display: flex;
+     flex-direction: column;
+    justify-content: center;
       padding: 20px;
-      text-align: left;
-  
+      
+      
       h2 {
+        text-align: left;
         font-size: 1.5em;
         margin-bottom: 10px;
+        font-family: sans-serif;
       }
   
       p {
-        margin-bottom: 15px;
+        
+        font-family: sans-serif;
       }
-  
+      .rating{
+        display: flex;
+   
+       gap: 5px;
+       margin-top: 12px;
+        align-items: center;
+        p{
+    font-size: 16px;
+    font-family: sans-serif;
+          
+        }
+      }
       .price {
-        font-size: 1.2em;
-        font-weight: bold;
-        color: #3498db; // or any other color you prefer
-        margin-bottom: 15px;
+       
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        font-family: sans-serif;
+        align-items: center;
+        font-weight: 700;
+        h2{
+          font-size: 20px;
+          font-weight: 700;
+          text-decoration: line-through;
+          
+        }
+        p{
+          color: #a80417;
+        }
+        h3{
+          font-size: 20px;
+          color: #a80417;
+          small{
+            font-size: 20px;
+          }
+        }
       }
   
       .add-to-cart-btn {
+      
         padding: 10px 20px;
         background-color: #27ae60; // or any other color you prefer
         color: #fff;

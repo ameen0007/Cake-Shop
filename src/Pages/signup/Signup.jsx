@@ -11,7 +11,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth, fireDB, } from "../../firebase/Firebase.config";
-import { Timestamp, addDoc, collection, refEqual } from "firebase/firestore";
+import { Timestamp, addDoc, collection, getDocs, query, refEqual, where } from "firebase/firestore";
 import { Loader } from "../../componets/Loader/Loader";
 import { Authcontext } from "../../componets/contexts/Authcontext";
 import { Transition } from "../../componets/Animation/Transition";
@@ -47,15 +47,60 @@ export const Signup = () => {
   const [showPopup, setshowpopup] = useState(false);
  const [previewImage,setPreviewImage] =useState("")
   const [userdetail, setuserdetail] = useState();
+  const [showbtn,setshowbtn]=useState(false)
+
   useEffect(() => {
     localStorage.getItem("user");
-
+    
+    
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, []);
 
   useEffect(() => {
+    if(auth.currentUser && auth.currentUser.emailVerified === false){
+   
+      handleauthdelete()
+  }
+   
+  const handleauthdelete = async()=>{
+    await deleteUser(auth.currentUser);
+    toast.error("You cancelled the signup process")
+  }
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user && user.emailVerified) {
+        const usersCollectionRef = collection(fireDB, 'users');
+        console.log(usersCollectionRef,"usercolref");
+        const querydata = query(usersCollectionRef, where("email", "==", user.email));
+        console.log(querydata,"query");
+        const querySnapshot = await getDocs(querydata);
+        console.log(querySnapshot,"querySnapshot");
+        if (querySnapshot.size > 0) {
+          navigate("/"); // Redirect if user's email is found in the database
+        } else {
+          console.log("User email is not saved in the database");
+    
+          // Delete the user's authentication account
+          await deleteUser(user);
+    
+          // Show a toast message to inform the user
+          toast.error("Registration Timeout. Please Register again.");
+        }
+      }
+    });
+  
+    return () => unsubscribe();
+  }, []);
+
+
+  useEffect(() => {
+
+   
+
     const handleBeforeUnload = async () => {
       const unsubscribe = onAuthStateChanged(auth, async (user) => {
         if (user && !user.emailVerified) {
@@ -95,11 +140,14 @@ export const Signup = () => {
   };
    const handleclosed =()=>{
       setPreviewImage("")
+      setProfilePic(null)
    }
-  const onClose = async () => {
-    try {
-      setloading(true);
 
+
+  const onClose = async () => {
+    setloading(true)
+    try {
+      
       await auth.currentUser.reload();
 
       if (auth.currentUser.emailVerified) {
@@ -116,25 +164,28 @@ export const Signup = () => {
         localStorage.setItem("nickname", nickname);
 
         // Inside your handlesignup function
-if (profilePic) {
-  const storage = getStorage()
-  const storageRef = ref(storage, `profile-pics/${userdetail.uid}`);
-   
-  await uploadBytes(storageRef, profilePic);
-  
-  // Get the download URL of the uploaded image
-  const downloadURL = await getDownloadURL(storageRef);
-  
-  // Update user's profile with the photoURL
-  await updateProfile(auth.currentUser, { photoURL: downloadURL });
-  localStorage.setItem("photoURL", downloadURL);
-  setProfilePic(downloadURL)
-}
-
-    
-     
-    
-
+        if (profilePic) {
+          
+          const user = auth.currentUser;
+        
+          const storage = getStorage();
+          const storageRef = ref(storage, `profile-pics/${user.uid}`); // Use user's UID as part of the storage path
+        
+          // Upload the profile picture to storage
+          await uploadBytes(storageRef, profilePic);
+        
+          // Get the download URL of the uploaded image
+          const downloadURL = await getDownloadURL(storageRef);
+        
+          // Update user's profile with the photoURL
+          await updateProfile(user, { photoURL: downloadURL });
+          
+          // Save the download URL to local storage
+          localStorage.setItem("photoURL", downloadURL);
+          
+          // Update the profile picture state
+          setProfilePic(downloadURL);
+        }
         const isAdmin = userdetail.user.email === "ameencrews@gmail.com";
         setAuthadmin(isAdmin);
         localStorage.setItem("isAdmin", JSON.stringify(isAdmin));
@@ -156,27 +207,37 @@ if (profilePic) {
 
         console.log("Storing user in local storage:", user);
         localStorage.setItem("user", JSON.stringify(user));
-
+       
         toast.success("Account created successfully..!");
         navigate("/");
+        setloading(false)
       } else {
         console.log("user not verified", auth.currentUser.emailVerified);
+        setloading(false)
+        
+        console.log("??");
         await auth.currentUser.delete();
         setName("");
         setEmail("");
         setPassword("");
         setnickname("");
         toast.error("Your Email is Not Verified. Please Sign Up Again");
+        setshowpopup(false)
+        
       }
     } catch (error) {
+    
+    setloading(false)
+    await auth.currentUser?.delete();
+    setName("");
+    setEmail("");
+    setPassword("");
+    setnickname("");
       console.error("Error closing popup:", error.message);
-      // Handle the error gracefully, e.g., show an error message to the user
-    } finally {
-      setloading(false); // Move setloading(false) inside finally block
-      setshowpopup(false);
-    }
+      toast.error(error,"(Catch, network error please try again)")
+      setshowpopup(false)
   };
-
+  }
   const handlesignup = async (e) => {
     try {
       e.preventDefault();
@@ -205,12 +266,15 @@ if (profilePic) {
 
       setshowpopup(true);
 
+      setTimeout(() => {
+         setshowbtn(true)
+      }, 4000);
       setuserdetail(users);
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
         toast.error("This Email is already Used");
       } else {
-        toast.error(error.message);
+        toast.error(error.message,"Network error 1");
       }
     } finally {
       setloading(false);
@@ -288,7 +352,7 @@ if (profilePic) {
                   <span
                     style={{
                       fontSize: "20px",
-                      color: "black",
+                      color: "#990011",
                       marginRight: "8px",
                       position: "absolute",
                       right: "20px",
@@ -326,6 +390,9 @@ if (profilePic) {
           <div>
             <p style={{ fontFamily: "sans-serif", fontSize : '20px'}}> Check Your Mail For Verfication</p>
           </div>
+          {showbtn &&
+
+          <>
           <div>
             <button onClick={onClose}>Continue</button>
           </div>
@@ -356,6 +423,8 @@ if (profilePic) {
               Email Verification
             </span>
           </div>
+          </>
+           }
         </div>
       </div>
     </>

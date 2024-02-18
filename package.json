@@ -15,6 +15,7 @@
     "firebase": "^10.7.2",
     "framer-motion": "^10.18.0",
     "react": "^18.2.0",
+    "react-alice-carousel": "^2.8.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "react-rating-stars-component": "^2.2.0",
@@ -22,12 +23,11 @@
     "react-router-dom": "^6.21.2",
     "react-simple-star-rating": "^5.1.7",
     "react-simple-typewriter": "^5.0.1",
-    "react-slick": "^0.30.1",
     "react-spinners": "^0.13.8",
+    "react-star-ratings": "^2.3.0",
     "react-tabs": "^6.0.2",
     "react-toastify": "^10.0.3",
-    "sass": "^1.69.7",
-    "slick-carousel": "^1.8.1"
+    "sass": "^1.69.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

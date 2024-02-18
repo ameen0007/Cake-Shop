@@ -1,0 +1,151 @@
+
+$white-color: #fcf6f5;
+$red: #990011;
+$black: rgb(16, 15, 15);
+
+.section4.mode{
+    background-color: $black;
+    .h1{
+        h1{
+            color: rgb(189, 182, 182);
+        }
+    }
+    .outer-div-card{
+
+    
+    .card-div{
+        color: $white-color;
+        box-shadow: rgb(98, 96, 96) 0px 0px 2px 2px;
+    }
+}
+}
+
+
+
+.section4{
+    background-color: rgb(255, 255, 255);
+   min-height: 100vh;
+    padding: 100px 25px 25px 25px ;
+   
+    .h1{
+        display: flex;
+        justify-content: center;
+        border-bottom: 2px solid $red;
+        font-size: 18px;
+        h1{
+            font-family: sans-serif;
+          span{
+            font-size: 23px;
+          }
+        }
+    }
+    .outer-div-card{
+        @media (min-width: 1000px) {
+            
+             width: 70%;
+             margin: auto;
+             display: grid;
+    grid-gap: 20px; 
+    grid-template-columns: repeat(auto-fill, minmax(400px, 2fr))
+             
+        }   
+    
+    .card-div{
+        display: flex;
+        margin-top: 15px;
+        box-shadow: rgba(0, 0, 0, 1) 0px 5px 15px;
+       border-radius: 10px;
+        padding: 20px;
+        gap: 10px;
+        @media (min-width: 1000px) {
+         width: 100%;
+       
+         margin: auto;
+           margin-bottom: 20px;
+           
+        }
+        
+        .img-div{
+            @media (min-width: 1000px) {
+               width: 180px;
+            }
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+        .aside-div{
+            @media (min-width: 1000px) {
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+             }
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+           
+            width: 100%;
+            h3{
+                font-family: sans-serif;
+                margin-top: 0px;
+                text-align: left;
+               font-size: 17px;
+              
+            }
+   
+            .rating-div{
+               display: flex;
+               height: 23px;
+          ;
+               align-items: center;
+               gap: 5px;
+               
+               padding: 0px;
+               margin: 0;
+               p{
+                font-size: 19px;
+                
+               }
+            }
+            .price-div{
+                display: flex;
+                gap: 10px;
+                width: auto;
+              
+                h2{
+                    font-size: 15px;
+                 
+                }
+               
+                
+            }
+            .btn-div{
+               
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                button{
+                    @media (min-width: 1000px) {
+                        width: 100%;
+                     }
+                    width: 70%;
+                    padding: 7px;
+                   background-color: #990011;
+                   border: none;
+                   color: white;
+                   border-radius: 5px;
+                }
+            }
+
+        }
+    
+    }
+}
+
+}

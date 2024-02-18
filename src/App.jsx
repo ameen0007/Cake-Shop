@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Admin } from "./Pages/admin/Admin"
 import { Orders } from "./Pages/admin/pages/Orders/Orders"
 import { Protectedadminpage, Protectedloginpage, Protectedpages } from "./componets/contexts/ProtectedRoutes"
+import { Allproducts } from "./Pages/Allproducts/Allproducts"
 
 
 
@@ -26,6 +27,7 @@ const location = useLocation()
     <Routes key={location.pathname} location={location } >
 
       <Route  path="/" element={<Home/>}/>
+      <Route path="/Products" element={<Allproducts/>}/>
 
       <Route element={<Protectedloginpage/>}>
       <Route  path="/Login" element={<Login/>}/>

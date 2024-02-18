@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./cart.scss";
 import { Modal } from "../../componets/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
+import classNames from "classnames";
 import {
   addtocart,
   deletefromcart,
@@ -15,12 +16,13 @@ import { addDoc, collection } from "firebase/firestore";
 import { fireDB } from "../../firebase/Firebase.config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Apicontext } from "../../componets/Context/Context";
 
 export const Cart = () => {
   const caritems = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate()
-
+  const {mode} = useContext(Apicontext)
   console.log(caritems, "??");
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -57,17 +59,24 @@ export const Cart = () => {
   const handledeletecart = (dataid) => {
     dispatch(deletefromcart(dataid));
   };
-
+  const darkmode = classNames("cart-page-container", { mode: !mode });
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [pincode, setPincode] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [orderstatus,setorderstatus] = useState("Preparing For Dispatch")
   const buynow = () => {
-    console.log("hii");
+    console.log("hiiyyyyyyyyyyyyyyy");
     if (name === "" || address == "" || pincode == "" || phoneNumber == "") {
       return toast.error("All fields are required");
     }
+    const userData = JSON.parse(localStorage.getItem("user"));
+   
+
+    const email = userData.user ? userData.user.email : userData.email
+    const userid = userData.user ? userData.user.uid : userData.uid
+    
+    console.log(email,userid,"userid,email");
 
     const addressinfo = {
       name,
@@ -95,6 +104,7 @@ export const Cart = () => {
         toast.success("Payment Successful");
 
         const paymentId = response.razorpay_payment_id;
+       
         const orderinfo = {
           caritems,
           addressinfo,
@@ -103,17 +113,17 @@ export const Cart = () => {
             day: "2-digit",
             year: "numeric",
           }),
-          email: JSON.parse(localStorage.getItem("user")).user.email,
-          userid: JSON.parse(localStorage.getItem("user")).user.uid,
+          email, // Define email property here
+          userid,
           paymentId,
         };
         try {
           const orderref = collection(fireDB, "order");
           addDoc(orderref, orderinfo);
           dispatch(clearCart());
-          
+          navigate('/Orders')
         } catch (error) {
-          console.log(error);
+          console.log("not work ",error);
         }
       },
 
@@ -125,42 +135,53 @@ export const Cart = () => {
     var pay = new window.Razorpay(options);
     pay.open();
     
-    
+   
     console.log(pay);
   };
-
+  const backgroundColor = mode ? '#fcf6f5' : 'rgb(16, 15, 15)';
   return (
     <Transition>
-      
+      <Header/>
       {caritems.length > 0 ? (
         <>
          <Header />
-      <div className="cart-page-container">
+      <div className={darkmode}>
         <div className="cart-items">
           <h2>Cart Items</h2>
 
           {caritems.map((data) => {
             return (
               <div key={data.id} className="product-item">
+                <div onClick={() => navigate(`/Productinfo/${data.id}`)}  className="img">
                 <img
                   src={data.imageUrl} // Reace wiplth your actual image source
                   alt="Product"
                 />
+                </div>
+              
+                 
                 <div className="product-details">
                   <h3>{data.title}</h3>
-                  <p>{data.description}</p>
+                 
                   <p className="price">₹ {data.price}</p>
-                  <p>Quantity: {data.quantity}</p>
+                  <p style={{fontSize:'14px',fontFamily:'sans-serif'}}>Quantity:<span style={{color : '#990011'}}>{data.quantity}</span></p>
                   <div className="quantity-buttons">
+                    <div>
                     <button onClick={() => handleDecrement(data.id)}>-</button>
+                    </div>
+                    <div>
                     <button onClick={() => handleIncrement(data.id)}>+</button>
-
+                    </div>
+                    <div className="span" >
                     <span onClick={() => handledeletecart(data.id)}>
                       <RiDeleteBin6Line />
                     </span>
+                    </div>
+
+                   
                   </div>
                 </div>
-              </div>
+                </div>
             );
           })}
         </div>
@@ -195,9 +216,10 @@ export const Cart = () => {
       </div>
       </>
       ):(
-        <div>
-          <img src="https://w7.pngwing.com/pngs/432/660/png-transparent-empty-cart-illustration-thumbnail.png" alt="" />
-          <h1>Cart Is Empty</h1>
+        <div style={{ width : '100%',height:'100vh',display :'flex',justifyContent:'center',alignItems:'center',backgroundColor}}>
+          
+          <img style={{width : '50%'}} src="nocart.png" alt="" />
+        
         </div>
       )}
     </Transition>

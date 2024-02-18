@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { PropagateLoader } from 'react-spinners';
+import { HashLoader } from 'react-spinners';
 import { Apicontext } from '../Context/Context';
 import './loader.scss'
 
@@ -11,7 +11,7 @@ export const Loader = () => {
     <>
     {loading && 
     <div className={`loader-container ${loading ? 'blurred' : ''}`}>
-    <PropagateLoader color="red" size={15} />
+    <HashLoader color="#990011"  size={50} />
   </div>}
   </>
   );
